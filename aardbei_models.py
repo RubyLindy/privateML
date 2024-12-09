@@ -38,6 +38,8 @@ def train_evaluate_model(model_type, df, **kwargs):
 
     return model
 
+### MODELS
+
 ## LINEAR REGRESSION
 def linear_model(X_train, X_test, y_train, y_test):
     model = LinearRegression()
