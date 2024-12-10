@@ -17,7 +17,7 @@ def main():
 def menu(df):
     choice = 0
     while (choice != 3):
-        print("Enter what you want to do:")
+        print("\nEnter what you want to do:")
         print("1: Run a model.")
         print("2: Edit parameters")
         print("3: Exit")
@@ -40,49 +40,47 @@ def menu(df):
 def model_menu(df):
     choice = 0
     while(choice != 3):
-        print("These are the available models:")
-        print("1: Linear Regression")
-        print("2: Decision Tree")
-        print("3: Exit")
-        choice = int(input("Input:").strip)
-
-        match choice:
-            case 1:
-                train_evaluate_model(choice, df)
-            case 2:
-                train_evaluate_model(choice, df)
-            case 3:
-                print("Exiting.")
-            case _:
-                print("Provide a valid value.")
-    return
-
-def parameter_menu(): ##Continue on automating this
-    choice = 0
-    while(choice != 3):
         model_names = list(model_parameters.keys())
+        print("\nEnter what model you'd like to run:")
         print("Available models:")
         for model in model_names:
             print(f"  - {model}")
-        model_name = int(input("Input:").strip)
+        print("Enter 'exit' to return.")
 
-        if model_name not in model_names:
-            print("Model not found")
-        return
+        choice = input("Input:").strip().lower()
+
+        train_evaluate_model(choice, df)
+
+    return
+
+def parameter_menu():
+    model_name = ""
+    while model_name != "exit":
+        model_names = list(model_parameters.keys())
+        print("\nEnter what model you'd like to edit: ")
+        print("Available models:")
+        for model in model_names:
+            print(f"  - {model}")
+        print("Enter 'exit' to return.")
+        model_name = input("Input:").strip()
+
+        if model_name != "exit":
+            edit_parameters(model_name)
+    return
 
         
 
-def edit_parameters(model_name, model_parameters):
+def edit_parameters(model_name):
     #Exit if the model does not exist
     if model_name not in model_parameters:
-        print("Model not found")
+        print("\nModel not found")
         return
 
     parameters = model_parameters[model_name]
 
-    print(f"Current parameters for {model_name}:")
+    print(f"\nCurrent parameters for {model_name}:")
     for param, value in parameters.items():
-        print(f"{param}: {value}")
+        print(f"   {param}: {value}")
     
     param_to_edit = input("\nEnter the name of the parameter you want to change:").strip()
     if param_to_edit not in parameters:
@@ -116,10 +114,3 @@ def edit_parameters(model_name, model_parameters):
 if __name__ == "__main__":
     main()
 
-"""
-    fit_intercept = float(input(f"Enter alpha (current: {model_parameters['linear_regression']['alpha']}): "))
-    n_jobs = int(input(f"Enter max_iter (current: {model_parameters['linear_regression']['max_iter']}): "))
-
-    model_parameters['linear_regression']['fit_intercept'] = fit_intercept
-    model_parameters['linear_regression']['n_jobs'] = n_jobs
-"""

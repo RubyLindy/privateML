@@ -12,5 +12,10 @@ model_parameters = {
         "min_samples_leaf": 1,
         "random_state": None,
         "max_leaf_nodes": None,
+    },
+    "random_forest": { ##Unfinished
+        "n_estimators": 100,
+        "max_depth": None,
+        "random_state": None
     }
 }
