@@ -17,7 +17,7 @@ def main():
 def menu(df):
     choice = 0
     while (choice != 3):
-        print("\nEnter what you want to do:")
+        print("\nEnter the number of what you want to do:")
         print("1: Run a model.")
         print("2: Edit parameters")
         print("3: Exit")

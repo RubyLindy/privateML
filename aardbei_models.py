@@ -9,9 +9,6 @@ from sklearn.svm import SVR
 from sklearn import tree
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
-from parameters import model_parameters
-
-
 ##MODEL EVALUATION
 
 def evaluate_model(y_true, y_pred):
