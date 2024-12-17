@@ -4,11 +4,13 @@ import matplotlib.pyplot as plt
 
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.ensemble import RandomForestRegressor
 
+##-------import Error here!!(Move model training over to main.py?)
 from model_info import model_selector
 from parameters import model_parameters
 
@@ -47,6 +49,31 @@ def evaluate_model(y_true, y_pred):
     r2 = r2_score(y_true, y_pred)
     return mse, mae, r2
 
+def plot_predictions_vs_actual(y_test, y_pred):
+    """
+    Plot the predicted values versus the actual values for regression.
+    
+    Parameters:
+        y_test (array-like): True target values.
+        y_pred (array-like): Predicted target values.
+    """
+    plt.figure(figsize=(8, 6))
+
+    # Scatter plot of predictions vs actual values
+    plt.scatter(y_test, y_pred, color='blue', alpha=0.6, label="Predicted vs Actual")
+
+    # Reference line
+    plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 
+             color='red', linestyle='--', label="Perfect Prediction")
+
+    # Plot aesthetics
+    plt.title("Predicted vs Actual Values")
+    plt.xlabel("Actual Values")
+    plt.ylabel("Predicted Values")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
 ### MODELS
 
 ## LINEAR REGRESSION
@@ -81,6 +108,18 @@ def decision_tree_model(X_train, X_test, y_train, y_test, params):
 def random_forest_model(X_train, X_test, y_train, y_test, params):
     print("\nRunning the random forest model.")
     model = RandomForestRegressor(**params)
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    mse, mae, r2 = evaluate_model(y_test, y_pred)
+
+    return model, mse, mae, r2
+
+##SUPPORT VECTOR REGRESSION
+def svr_model(X_train, X_test, y_train, y_test, params):
+    print("\nRunning the support vector regression model.")
+    model = SVR(**params)
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)
