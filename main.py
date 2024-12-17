@@ -118,7 +118,7 @@ def prep_data(df):
     y = df['label'].values
     return train_test_split(X, y, test_size=0.3, random_state=None)
 
-##MODEL TRAINING
+## MODEL TRAINING
 def train_evaluate_model(model_type, df):
 
     X_train, X_test, y_train, y_test= prep_data(df)

@@ -52,6 +52,8 @@ def linear_model(X_train, X_test, y_train, y_test, params):
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
+    plot_predictions_vs_actual(y_test, y_pred)
+
     return model, mse, mae, r2
 
 ## DECISION TREE
@@ -66,6 +68,8 @@ def decision_tree_model(X_train, X_test, y_train, y_test, params):
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
+    plot_predictions_vs_actual(y_test, y_pred)
+
     return model, mse, mae, r2
 
 ## RANDOM FOREST REGRESSOR
@@ -77,6 +81,8 @@ def random_forest_model(X_train, X_test, y_train, y_test, params):
     y_pred = model.predict(X_test)
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
+
+    plot_predictions_vs_actual(y_test, y_pred)
 
     return model, mse, mae, r2
 
@@ -90,5 +96,7 @@ def svr_model(X_train, X_test, y_train, y_test, params):
     y_pred = model.predict(X_test)
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
+
+    plot_predictions_vs_actual(y_test, y_pred)
 
     return model, mse, mae, r2
