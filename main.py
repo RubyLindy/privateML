@@ -1,10 +1,10 @@
 #main.py
 #Importing models and packages
-from aardbei_models import train_evaluate_model
 from parameters import model_parameters
+from model_info import model_selector
+from sklearn.model_selection import train_test_split
 
 import pandas as pd
-
 
 def main():
     #load in DataFrame
@@ -110,6 +110,31 @@ def edit_parameters(model_name):
 
     parameters[param_to_edit] = new_value
     print(f"\nParameter '{param_to_edit}' updated to {new_value}.")
+
+## SET UP
+#Preparing features (X) and target (y)
+def prep_data(df):
+    X = df[['top_2_pxcount','top2_fruitcount','top2_maxfruit','top2_minfruit']].values
+    y = df['label'].values
+    return train_test_split(X, y, test_size=0.3, random_state=None)
+
+##MODEL TRAINING
+def train_evaluate_model(model_type, df):
+
+    X_train, X_test, y_train, y_test= prep_data(df)
+
+    if model_type in model_selector:
+        params = model_parameters.get(model_type, {})
+        model, mse, mae, r2 = model_selector[model_type](X_train, X_test, y_train, y_test, params)
+    else:
+        print("Invalid model name. Please choose from the available options.")
+        return
+
+    print("\nMean Squared Error: ", mse)
+    print("Mean Absolute Error: ", mae)
+    print("R2:", r2)
+
+    return model
 
 if __name__ == "__main__":
     main()
