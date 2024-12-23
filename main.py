@@ -39,16 +39,17 @@ def menu(df):
 
 def model_menu(df):
     choice = 0
-    while(choice != 3):
-        model_names = list(model_parameters.keys())
-        print("\nEnter what model you'd like to run:")
-        print("Available models:")
-        for model in model_names:
-            print(f"  - {model}")
-        print("Enter 'exit' to return.")
 
-        choice = input("Input:").strip().lower()
+    model_names = list(model_parameters.keys())
+    print("\nEnter what model you'd like to run:")
+    print("Available models:")
+    for model in model_names:
+        print(f"  - {model}")
+    print("Enter 'exit' to return.")
 
+    choice = input("Input:").strip().lower()
+
+    if choice == "exit":
         train_evaluate_model(choice, df)
 
     return
@@ -133,8 +134,6 @@ def train_evaluate_model(model_type, df):
     print("\nMean Squared Error: ", mse)
     print("Mean Absolute Error: ", mae)
     print("R2:", r2)
-
-    return model
 
 if __name__ == "__main__":
     main()

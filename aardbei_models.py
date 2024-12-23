@@ -86,7 +86,6 @@ def random_forest_model(X_train, X_test, y_train, y_test, params):
 ##SUPPORT VECTOR REGRESSION
 def svr_model(X_train, X_test, y_train, y_test, params):
     print("\nRunning the support vector regression model.")
-    print(params)
     model = SVR(**params)
     model.fit(X_train, y_train)
 
@@ -97,3 +96,16 @@ def svr_model(X_train, X_test, y_train, y_test, params):
     plot_predictions_vs_actual(y_test, y_pred)
 
     return model, mse, mae, r2
+
+##SIMPLE DIVISION MODEL
+def simple_division_model(X_train, X_test, y_train, y_test, params):
+    print("\nRunning the simple division model.")
+
+    constant = params.get("constant", 2000000)
+    y_pred = X_test[:, 0] / constant
+
+    mse, mae, r2 = evaluate_model(y_test, y_pred)
+
+    plot_predictions_vs_actual(y_test, y_pred)
+
+    return None, mse, mae, r2

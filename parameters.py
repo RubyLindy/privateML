@@ -23,5 +23,8 @@ model_parameters = {
         "kernel": "rbf",
         "C": 1.0,
         "epsilon": 0.1
+    },
+    "simple_division": {
+        "constant": 2000000
     }
 }
