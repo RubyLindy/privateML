@@ -102,9 +102,9 @@ def simple_division_model(X_train, X_test, y_train, y_test, params):
     print("\nRunning the simple division model.")
 
     divisor = params.get("divisor", 2000000)
-    weight = params.get("weight", 0.001)
+    weight = params.get("weight", 0.01)
 
-    y_pred = X_test[:, 0] / (divisor + weight * X_test[:, 0])
+    y_pred = X_test[:, 0] / (divisor + weight / X_test[:, 0])
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 

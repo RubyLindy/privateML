@@ -26,7 +26,7 @@ These parameters are also able to be changed through user input in the parameter
 Plots can be found in the plots folder, sorted by model type and labeled by version.
 
 ### Evaluation of errors
-MSE, MAE, and R2 are all calculated and presented in the terminal everytime a model is run but not saved.
+MSE, MAE, and R2 are all calculated and presented in the terminal every time a model is run and is added to the generated plots via the title.
 
 ### Observations
 17-12-2024 - All observations done with standard hyperparameters as input
@@ -34,3 +34,9 @@ MSE, MAE, and R2 are all calculated and presented in the terminal everytime a mo
 MSE, MAE, and R2 are across all models quite similair in results. MSE is usually around 9, MAE is usually around 2.3, and R2 is usually around 0.87, all with variations due to the random state.
 
 Looking at the plots, all of the models, beside linear regression, have a pattern of worse performance the more strawberries are actually in the punnet, least so for the Support Vector Regression (SVR) model. Linear regression has a consistent pattern accross the graph.
+
+23-12-2024
+
+For the simple_division model, version 1 was a very simple equation of just the top_2_pxcount divided by 2000000. The subsequent version were all weighted to some extent, with only marginally improved results.
+
+Simple_division has a generally worse performance than all other models, but exhibits similiar behaviour, with adequate performance at the lower actual values but predicting significantly too low with higher actual values. This problem has not been observed to be able to be solved with weighted dividors.
