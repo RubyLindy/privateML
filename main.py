@@ -49,7 +49,7 @@ def model_menu(df):
 
     choice = input("Input:").strip().lower()
 
-    if choice == "exit":
+    if choice != "exit":
         train_evaluate_model(choice, df)
 
     return

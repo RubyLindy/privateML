@@ -17,7 +17,7 @@ def evaluate_model(y_true, y_pred):
     r2 = r2_score(y_true, y_pred)
     return mse, mae, r2
 
-def plot_predictions_vs_actual(y_test, y_pred):
+def plot_predictions_vs_actual(y_test, y_pred, mae, mse):
     plt.figure(figsize=(8, 6))
 
     # Scatter plot of predictions vs actual values
@@ -28,7 +28,7 @@ def plot_predictions_vs_actual(y_test, y_pred):
              color='red', linestyle='--', label="Perfect Prediction")
 
     # Plot aesthetics
-    plt.title("Predicted vs Actual Values")
+    plt.title("Predicted vs Actual Values\nMAE:" + str(mae) + " | MSE: " + str(mse))
     plt.xlabel("Actual Values")
     plt.ylabel("Predicted Values")
     plt.legend()
@@ -49,7 +49,7 @@ def linear_model(X_train, X_test, y_train, y_test, params):
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
-    plot_predictions_vs_actual(y_test, y_pred)
+    plot_predictions_vs_actual(y_test, y_pred, mae, mse)
 
     return model, mse, mae, r2
 
@@ -65,7 +65,7 @@ def decision_tree_model(X_train, X_test, y_train, y_test, params):
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
-    plot_predictions_vs_actual(y_test, y_pred)
+    plot_predictions_vs_actual(y_test, y_pred, mae, mse)
 
     return model, mse, mae, r2
 
@@ -79,7 +79,7 @@ def random_forest_model(X_train, X_test, y_train, y_test, params):
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
-    plot_predictions_vs_actual(y_test, y_pred)
+    plot_predictions_vs_actual(y_test, y_pred, mae, mse)
 
     return model, mse, mae, r2
 
@@ -93,7 +93,7 @@ def svr_model(X_train, X_test, y_train, y_test, params):
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
-    plot_predictions_vs_actual(y_test, y_pred)
+    plot_predictions_vs_actual(y_test, y_pred, mae, mse)
 
     return model, mse, mae, r2
 
@@ -101,11 +101,13 @@ def svr_model(X_train, X_test, y_train, y_test, params):
 def simple_division_model(X_train, X_test, y_train, y_test, params):
     print("\nRunning the simple division model.")
 
-    constant = params.get("constant", 2000000)
-    y_pred = X_test[:, 0] / constant
+    divisor = params.get("divisor", 2000000)
+    weight = params.get("weight", 0.001)
+
+    y_pred = X_test[:, 0] / (divisor + weight * X_test[:, 0])
 
     mse, mae, r2 = evaluate_model(y_test, y_pred)
 
-    plot_predictions_vs_actual(y_test, y_pred)
+    plot_predictions_vs_actual(y_test, y_pred, mae, mse)
 
     return None, mse, mae, r2

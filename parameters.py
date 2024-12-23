@@ -25,6 +25,7 @@ model_parameters = {
         "epsilon": 0.1
     },
     "simple_division": {
-        "constant": 2000000
+        "divider": 2000000,
+        "weight": 0.001
     }
 }
