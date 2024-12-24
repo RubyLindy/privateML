@@ -26,6 +26,12 @@ model_parameters = {
     },
     "simple_division": {
         "divider": 2000000,
-        "weight": 0.01
+        "weight": 0.001
+    },
+    "knn": {
+        "n_neighbors": 5,
+        "weights": "uniform",
+        "algorithm": "auto",
+        "leaf_size": 30
     }
 }

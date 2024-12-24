@@ -40,3 +40,7 @@ Looking at the plots, all of the models, beside linear regression, have a patter
 For the simple_division model, version 1 was a very simple equation of just the top_2_pxcount divided by 2000000. The subsequent version were all weighted to some extent, with only marginally improved results.
 
 Simple_division has a generally worse performance than all other models, but exhibits similiar behaviour, with adequate performance at the lower actual values but predicting significantly too low with higher actual values. This problem has not been observed to be able to be solved with weighted dividors.
+
+24-12-2024
+
+KNN was added and exhibits the same behaviour as the other models, except simple_division. I conclude that the only way to improve results is to add more instances or more features.
