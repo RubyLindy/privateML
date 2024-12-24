@@ -3,10 +3,10 @@
 The goal of this software is find/create a machine learning model to correctly estimate the amount of strawberries in a punnet based on the pixel count of visible strawberries in the dataset.
 ### Contents of files
 #### requirements.txt
-requirements.txt is merely what packages I have installed on this PC, most of them I do use or need.
+requirements.txt contains the names and versions of the packages I have installed on this PC, most of them I do use or need, some are irrelevant.
 
 #### aardbei_models.py
-aardbei_models.py is where all the functions that all upon the models are located, also most evaluation functions are here.
+aardbei_models.py is where all the functions that call upon the skilearn models are located, also most evaluation functions are here.
 
 #### main.py
 main.py is where the dataframe is loaded in, set up, and where we call upon the functions in aardbei_models.py. What models are called is decided through user input in the menu functions.
@@ -17,16 +17,16 @@ The actual main function itself is found here and only loads in the dataframe an
 model_info.py is where we associate a string, the user input of the model type, to the actual function in aardbei_models.py
 
 #### parameters.py
-parameters.py is where all the models' hyperparameters are saved so the models in aardbei_models.py can easily access them.
+parameters.py is where all the models' hyperparameters are saved so the models in aardbei_models.py can access them.
 
 These parameters are also able to be changed through user input in the parameter_menu function in main.py.
 
 ## Data analysis
 ### Plots
-Plots can be found in the plots folder, sorted by model type and labeled by version.
+Plots can be found in the plots folder, sorted by model type, each having their own folder, and labeled by version.
 
 ### Evaluation of errors
-MSE, MAE, and R2 are all calculated and presented in the terminal every time a model is run and is added to the generated plots via the title.
+MSE, MAE, and R2 are all calculated and presented in the terminal every time a model is run and are added to the generated plots via the title.
 
 ### Observations
 17-12-2024 - All observations done with standard hyperparameters as input
