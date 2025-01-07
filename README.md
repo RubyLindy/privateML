@@ -44,3 +44,7 @@ Simple_division has a generally worse performance than all other models, but exh
 24-12-2024
 
 KNN was added and exhibits the same behaviour as the other models, except simple_division. I conclude that the only way to improve results is to add more instances or more features.
+
+7-1-2024
+
+The other perspectives were added to the data set and new plots were made for all beside simple division (all v3 beside knn, there it is v2). All noticably perform better than how they did with the previous dataset.

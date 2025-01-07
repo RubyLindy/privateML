@@ -115,7 +115,7 @@ def edit_parameters(model_name):
 ## SET UP
 #Preparing features (X) and target (y)
 def prep_data(df):
-    X = df[['top_2_pxcount','top2_fruitcount','top2_maxfruit','top2_minfruit']].values
+    X = df[['top_2_pxcount','top2_fruitcount','top2_maxfruit','top2_minfruit','left2_pxcount','left2_fruitcount','left2_maxfruit','left2_minfruit','right2_pxcount','right2_fruitcount','right2_maxfruit','right2_minfruit']].values
     y = df['label'].values
     return train_test_split(X, y, test_size=0.3, random_state=None)
 
