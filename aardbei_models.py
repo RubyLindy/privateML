@@ -7,6 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn import tree
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
@@ -117,6 +118,20 @@ def simple_division_model(X_train, X_test, y_train, y_test, params):
 def knn_model(X_train, X_test, y_train, y_test, params):
     print("\nRunning the KNN model.")
     model = KNeighborsRegressor(**params)
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    mse, mae, r2 = evaluate_model(y_test, y_pred)
+
+    plot_predictions_vs_actual(y_test, y_pred, mae, mse)
+
+    return model, mse, mae, r2
+
+##GRADIENT BOOSTING REGRESSOR
+def gradient_boosting_model(X_train, X_test, y_train, y_test, params):
+    print("\nRunning the Gradient Boosting model.")
+    model = GradientBoostingRegressor(**params)
     model.fit(X_train, y_train)
 
     y_pred = model.predict(X_test)

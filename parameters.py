@@ -33,5 +33,12 @@ model_parameters = {
         "weights": "uniform",
         "algorithm": "auto",
         "leaf_size": 30
+    },
+    "gradient_boosting": {
+        "loss": "squared_error",
+        "learning_rate": 0.1,
+        "n_estimators": 100,
+        "max_depth": 3,
+        "max_features": None
     }
 }

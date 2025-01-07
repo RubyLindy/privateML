@@ -47,4 +47,6 @@ KNN was added and exhibits the same behaviour as the other models, except simple
 
 7-1-2024
 
-The other perspectives were added to the data set and new plots were made for all beside simple division (all v3 beside knn, there it is v2). All noticably perform better than how they did with the previous dataset.
+The other perspectives were added to the data set and new plots were made for all beside simple division (all v3 beside knn, there it is v2). All noticably perform better than how they did with the previous dataset. But the new dataset does have some strange outliers, some instances have all values beside the label set as 0, causing some of the more susceptible models to also present 0's as predictions.
+
+After this, the Gradient Boosting Regressor model was added and noticibly is less sensitive to outliers and performs similiarly well than the other models.
